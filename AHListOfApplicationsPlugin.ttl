@@ -16,9 +16,9 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix gsp: <http://www.opengis.net/ont/geosparql#> .
 
-<Test/SoftwareSourceCode/AHListOfApplications> a schema:SoftwareSourceCode;
+<Plugin/SoftwareSourceCode/AHListOfApplications> a schema:SoftwareSourceCode;
 
-  schema:identifier "Test/SoftwareSourceCode/AHListOfApplications" ;
+  schema:identifier "Plugin/SoftwareSourceCode/AHListOfApplications" ;
   schema:name "Plugin for the conversion from AHListOfApplications to GeoJSON payload" ;
   schema:description "Plugin for the conversion from AHListOfApplications to GeoJSON payload" ;
   schema:softwareVersion "0.0.1";
@@ -38,12 +38,12 @@
   ## INVOKER-TYPE;LANGUAGE VERSION;CLASSPATH;JARNAME;CLASS
   schema:runtimePlatform "java-1.10" ;
 
-  schema:targetProduct <Test/SoftwareApplication/AHListOfApplications> ;
+  schema:targetProduct <Plugin/SoftwareApplication/AHListOfApplications> ;
 .
 
-<Test/SoftwareApplication/AHListOfApplications> a schema:SoftwareApplication;
+<Plugin/SoftwareApplication/AHListOfApplications> a schema:SoftwareApplication;
 
-  schema:identifier "Test/SoftwareApplication/AHListOfApplications" ;
+  schema:identifier "Plugin/SoftwareApplication/AHListOfApplications" ;
 
   schema:potentialAction [ a schema:ControlAction ;
       #Description of Payload schema and format
