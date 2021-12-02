@@ -16,9 +16,9 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix gsp: <http://www.opengis.net/ont/geosparql#> .
 
-<Test/SoftwareSourceCode/AHEpisodes> a schema:SoftwareSourceCode;
+<Plugin/SoftwareSourceCode/AHEpisodes> a schema:SoftwareSourceCode;
 
-  schema:identifier "Test/SoftwareSourceCode/AHEpisodes" ;
+  schema:identifier "Plugin/SoftwareSourceCode/AHEpisodes" ;
   schema:name "Plugin for the conversion from AHEpisodes to GeoJSON payload" ;
   schema:description "Plugin for the conversion from AHEpisodes to GeoJSON payload" ;
   schema:softwareVersion "0.0.1";
@@ -38,12 +38,12 @@
   ## INVOKER-TYPE;LANGUAGE VERSION;CLASSPATH;JARNAME;CLASS
   schema:runtimePlatform "java-1.10" ;
 
-  schema:targetProduct <Test/SoftwareApplication/AHEpisodes> ;
+  schema:targetProduct <Plugin/SoftwareApplication/AHEpisodes> ;
 .
 
-<Test/SoftwareApplication/AHEpisodes> a schema:SoftwareApplication;
+<Plugin/SoftwareApplication/AHEpisodes> a schema:SoftwareApplication;
 
-  schema:identifier "Test/SoftwareApplication/AHEpisodes" ;
+  schema:identifier "Plugin/SoftwareApplication/AHEpisodes" ;
 
   schema:potentialAction [ a schema:ControlAction ;
       #Description of Payload schema and format
