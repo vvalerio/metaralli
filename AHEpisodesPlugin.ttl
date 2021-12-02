@@ -57,7 +57,7 @@
       ] ;
   ];
 
-  schema:softwareRequirements "Java-Reflection;ah-episodes-plugin/target/;WP14_Episode-0.0.1-jar-with-dependencies;org.epos.ahepisodes.core.AHEpisodesInvoker" ;
+  schema:softwareRequirements "Java-Reflection;ah-episodes-plugin/target/;WP14_Episode-0.0.1-jar-with-dependencies.jar;org.epos.ahepisodes.core.AHEpisodesInvoker" ;
 
   dct:relation <anthropogenic_hazards/webservice/is-epos_platform/episodes> ;
 
