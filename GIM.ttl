@@ -1,0 +1,791 @@
+@prefix adms: <http://www.w3.org/ns/adms#> .  
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .  
+@prefix epos: <https://www.epos-eu.org/epos-dcat-ap#> .  
+@prefix dc: <http://purl.org/dc/elements/1.1/> .  
+@prefix dct: <http://purl.org/dc/terms/> .  
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .  
+@prefix hydra: <http://www.w3.org/ns/hydra/core#> .  
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .  
+@prefix schema: <http://schema.org/> .  
+@prefix dcat: <http://www.w3.org/ns/dcat#> .  
+@prefix cnt: <http://www.w3.org/2011/content#> .  
+@prefix locn: <http://www.w3.org/ns/locn#> .  
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .  
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .  
+@prefix http: <http://www.w3.org/2006/http#> .  
+@prefix owl: <http://www.w3.org/2002/07/owl#> .  
+@prefix gsp: <http://www.opengis.net/ont/geosparql#> .  
+@prefix dqv: <http://www.w3.org/ns/dqv#> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+
+<contactBoreholeIndex> a schema:Person;
+	schema:identifier [ a schema:PropertyValue;
+		schema:propertyID "mailto";
+		schema:value "mailto:contact-brgm@brgm.fr";
+	]; 
+	schema:familyName "Support BRGM";
+	schema:address [ a schema:PostalAddress;
+		schema:streetAddress "3, avenue Claude Guillemin";
+		schema:addressLocality "ORLEANS";
+		schema:postalCode "45000";
+		schema:addressCountry "FRANCE";
+	]; 
+	schema:email "contact-brgm@brgm.fr";
+	schema:affiliation <https://data.geoscience.earth/ncl/organization/1>;
+	schema:contactPoint <contactBoreholeIndex/scientificContact>;
+	schema:contactPoint <contactBoreholeIndex/legalContact>;
+	schema:contactPoint <contactBoreholeIndex/financialContact>;
+	schema:contactPoint <contactBoreholeIndex/manager>;
+. 
+
+#<https://data.geoscience.earth/ncl/organization/1> a schema:Organization;
+#	schema:identifier [ a schema:PropertyValue;
+#		schema:propertyID "PIC";
+#		schema:value "999993662";
+#	]; 
+#	schema:legalName "Bureau de Recherches Géologiques et Minières"@en;
+#	#schema:legalName "BRGM (French Geological Survey)"@en;
+#	schema:leiCode "Legal Entity Identifier Search: http://www.lei-lookup.com/#!search" ;
+#	schema:address [ a schema:PostalAddress;
+#		schema:streetAddress "3, avenue Claude Guillemin";
+#		schema:addressLocality "ORLEANS";
+#		schema:postalCode "45000";
+#		schema:addressCountry "FRANCE";
+#	]; 
+#	schema:url "http://www.brgm.eu"^^xsd:anyURI;
+#	schema:email "contact-brgm@brgm.fr";
+#	schema:contactPoint <contactBoreholeIndex/scientificContact>;
+#	schema:contactPoint <contactBoreholeIndex/legalContact>;
+#	schema:contactPoint <contactBoreholeIndex/financialContact>;
+#. 
+
+
+
+	<contactBoreholeIndex/manager> a schema:ContactPoint;
+		schema:email "contact-brgm@brgm.fr";
+		schema:availableLanguage "en" ;
+		schema:contactType "manager" ;
+. 
+
+	<contactBoreholeIndex/scientificContact> a schema:ContactPoint;
+		schema:email "contact-brgm@brgm.fr";
+		schema:availableLanguage "en" ;
+		schema:contactType "scientificContact" ;
+. 
+	<contactBoreholeIndex/legalContact> a schema:ContactPoint;
+		schema:email "contact-brgm@brgm.fr";
+		schema:availableLanguage "en" ;
+		schema:contactType "legalContact" ;
+. 
+	<contactBoreholeIndex/financialContact> a schema:ContactPoint;
+		schema:email "contact-brgm@brgm.fr";
+		schema:availableLanguage "en" ;
+		schema:contactType "financialContact" ;
+.
+
+
+	<https://data.geoscience.earth/id/dataset/borehole> a dcat:Dataset;
+		dct:title "Borehole data index";
+		dct:identifier "https://data.geoscience.earth/id/dataset/borehole";
+		adms:identifier [ a adms:Identifier;
+			adms:schemeAgency "DDSS-ID";
+			skos:notation "WP15-DDSS-001a";
+		]; 
+		dct:description "This dataset is the harvesting of Borehole Index content provided by the current data providers. It provides metadata information for each borehole (ID, purpose, location, type of observations / measurements).  It aims at supporting search and download of borehole datasets.  The detailed information along the boreholes are not provided and are not planned to be consolidated in a central database, but rather be accessed through another set of services, to be delivered by the data providers (ie national geological surveys or research organisation).";
+		dct:accrualPeriodicity "http://purl.org/cld/freq/irregular"^^xsd:anyURI;
+		dct:created "2016-10-27"^^xsd:date;
+		dct:temporal 
+			[ a dct:PeriodOfTime;
+				schema:startDate "1886-05-16T00:00:00Z"^^xsd:dateTime; 
+				#schema:endDate "YYYY-MM-DDThh:mm:ssZ"^^xsd:dateTime; 
+			]; 
+	dct:spatial [ a dct:Location; 
+		locn:geometry "POLYGON((-180 -90,-180 90,180 90,180 -90,-180 -90))"^^gsp:wktLiteral;
+	]; 
+		dcat:theme <category:beholes>;
+		dcat:keyword "borehole","geology","INSPIRE:GE","GeoSciML";
+		dcat:contactPoint <contactBoreholeIndex/manager>;
+		dcat:distribution <https://data.geoscience.earth/id/dataset/borehole/distributionWfs>; 
+		dcat:distribution <https://data.geoscience.earth/id/dataset/borehole/distributionWms>; 
+		dct:publisher <https://data.geoscience.earth/ncl/organization/1>;
+		dqv:hasQualityAnnotation [ a oa:Annotation ;
+			oa:hasBody "https://data.geoscience.earth/doc/Quality_assurance/EPOS_TCS_GIM_quality_assurance.html"^^xsd:anyURI ;
+		];
+. 
+	<https://data.geoscience.earth/id/dataset/borehole/distributionWfs> a dcat:Distribution;
+		dct:identifier "https://data.geoscience.earth/id/dataset/borehole/distributionWfs";
+		dct:title "Borehole Download Service";
+		dct:description "This service enables to search for existing Boreholes through spatial and attribute based queries (names, drilling method, ...) and download the corresponding data subset of interest. It is not meant for just browsing the map, for this, please use the Borehole View Service";
+		dct:issued "2016-10-27"^^xsd:date;
+		dct:modified "2018-01-19"^^xsd:date;
+		dct:type "http://publications.europa.eu/resource/authority/distribution-type/WEB_SERVICE"^^xsd:anyURI;
+		dct:conformsTo <https://data.geoscience.earth/api/wfsBorehole>;
+		dcat:accessURL <https://data.geoscience.earth/api/wfsBorehole/operation>;
+		dct:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:anyURI ;
+		dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^xsd:anyURI;
+		#dct:format "https://www.iana.org/assignments/media-types/application/gml+xml"^^xsd:anyURI;
+. 
+
+	<https://data.geoscience.earth/id/dataset/borehole/distributionWms> a dcat:Distribution;
+		dct:identifier "https://data.geoscience.earth/id/dataset/borehole/distributionWms";
+		dct:title "Borehole View Service";
+		dct:description "This service allows visualization of available Boreholes in a given area of Europe.";
+		dct:issued "2016-10-27"^^xsd:date;
+		dct:modified "2018-01-19"^^xsd:date;
+		dct:type "http://publications.europa.eu/resource/authority/distribution-type/WEB_SERVICE"^^xsd:anyURI;
+		dct:conformsTo <https://data.geoscience.earth/api/wmsBorehole>; 
+		dcat:accessURL <https://data.geoscience.earth/api/wmsBorehole/operation>;
+		dct:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:anyURI ;
+		dct:format "http://publications.europa.eu/resource/authority/file-type/PNG"^^xsd:anyURI;
+		#dct:format "https://www.iana.org/assignments/media-types/image/png"^^xsd:anyURI;
+. 
+
+<https://data.geoscience.earth/doc/wfsSpec> a hydra:ApiDocumentation ;
+	hydra:title "BoreholeIndex service documentation" ;
+	hydra:description "TCS GIM BoreholeIndex documentation provides information regarding the BoreholeIndex model and how to use it" ;
+	hydra:entrypoint "https://data.geoscience.earth/doc/Service_documentation/BoreholeIndex_DownloadService.html"^^xsd:anyURI;
+.	
+	
+	
+<https://data.geoscience.earth/doc/wmsSpec> a hydra:ApiDocumentation ;
+	hydra:title "BoreholeIndex service documentation" ;
+	hydra:description "TCS GIM BoreholeIndex documentation provides information regarding the BoreholeIndex model and how to use it" ;
+	hydra:entrypoint "https://data.geoscience.earth/doc/Service_documentation/BoreholeIndex_DownloadService.html"^^xsd:anyURI;
+.
+
+
+
+<https://data.geoscience.earth/api/wfsBorehole> a epos:WebService;
+	schema:identifier "https://data.geoscience.earth/api/wfsBorehole";
+	#schema:identifier [ a schema:PropertyValue; 
+		#schema:propertyID  "DDSS-ID"; 
+		#schema:value  "WP15-DDSS-001i"; 
+	#]; 
+	schema:description "This service enables to search for existing Boreholes through spatial and attribute based queries (names, drilling method, ...) and download the corresponding data subset of interest. It is not meant for just browsing the map, for this, please use the Borehole View Service";
+	schema:name "Borehole Download Service";
+	hydra:entrypoint "https://data.geoscience.earth/api/wfsBorehole"^^xsd:anyURI; 
+	schema:provider <https://data.geoscience.earth/ncl/organization/1>;
+	schema:datePublished "2016-10-27Z"^^xsd:date;
+	schema:dateModified "2018-01-19Z"^^xsd:date;
+	dct:conformsTo <https://data.geoscience.earth/doc/wfsSpec>;
+	dct:spatial [ a dct:Location; 
+		locn:geometry "POLYGON((-180 -90,-180 90,180 90,180 -90,-180 -90))"^^gsp:wktLiteral; 
+	]; 
+	hydra:supportedOperation <https://data.geoscience.earth/api/wfsBorehole/operation>;
+	schema:keywords "borehole","geology";
+	dct:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:anyURI ;
+	dct:temporal 
+	[ a dct:PeriodOfTime;
+		schema:startDate "1886-05-16T00:00:00Z"^^xsd:dateTime; 
+		#schema:endDate "YYYY-MM-DDThh:mm:ssZ"^^xsd:dateTime; 
+	]; 
+	dcat:contactPoint <contactBoreholeIndex/manager>;
+. 
+
+
+	<https://data.geoscience.earth/api/wfsBorehole/operation> a hydra:Operation;
+		hydra:method "GET"^^xsd:string;
+		hydra:returns "application/gml+xml";
+		hydra:property[ a hydra:IriTemplate;
+			hydra:template "https://data.geoscience.earth/api/wxsBorehole{?service, request, typenames, version, outputFormat, count, gml:identifier, gml:name, purpose, status, drillingMethod, operator, driller, drillStartDate, drillEndDate, startPoint, inclinationType, boreholeMaterialCustodian, boreholeLength_m, elevation_m, elevation_srs, positionalAccuracy, source, parentBorehole_uri, metadata_uri, cored, accessToPhysicalDrillCore, boreholeUse}&bbox={minlatitude,minlongitude,maxlatitude,maxlongitude}"^^xsd:string;
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "service"^^xsd:string;
+					rdfs:range "xsd:string";
+					rdfs:label "service";
+					schema:defaultValue "WFS";
+					hydra:required "true"^^xsd:boolean;
+					schema:readonlyValue "true"^^xsd:boolean ;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "request"^^xsd:string;
+					rdfs:range "xsd:string";
+					rdfs:label "Request type";
+					schema:defaultValue "GetFeature";
+					hydra:required "true"^^xsd:boolean;
+					schema:readonlyValue "true"^^xsd:boolean ;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "typenames"^^xsd:string;
+					rdfs:range "xsd:string";
+					rdfs:label "FeatureType";
+					schema:defaultValue "epos-gsmlp:BoreholeView";
+					hydra:required "true"^^xsd:boolean;
+					schema:readonlyValue "true"^^xsd:boolean ;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "version"^^xsd:string;
+					rdfs:range "xsd:string";
+					rdfs:label "WFS version";
+					schema:defaultValue "2.0.2";
+					hydra:required "true"^^xsd:boolean;
+					schema:readonlyValue "true"^^xsd:boolean ;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "count"^^xsd:string;
+					rdfs:range "xsd:string";
+					rdfs:label "WFS count parameter";
+					hydra:required "false"^^xsd:boolean;
+					schema:readonlyValue "true"^^xsd:boolean ;
+				];
+			        
+				#hydra:mapping[ a hydra:IriTemplateMapping;
+					#hydra:variable "BBOX"^^xsd:string;
+					#rdfs:range "xsd:string";
+					#rdfs:label "WFS BBOX filter parameter";
+					#hydra:required "false"^^xsd:boolean;
+				#];
+			        
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "minlatitude"^^xsd:string;
+					hydra:property "epos:southernmostLatitude";
+					rdfs:range "xsd:float";
+					rdfs:label "Minimum Latitude";
+					schema:minValue "-90.0";
+					schema:maxValue "90.0";
+					hydra:required "true"^^xsd:boolean;
+					schema:defaultValue "54.9703";
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "maxlatitude"^^xsd:string;
+					hydra:property "epos:northernmostLatitude";
+					rdfs:range "xsd:float";
+					rdfs:label "Maximum Latitude";
+					schema:minValue "-90.0";
+					schema:maxValue "90.0";
+					hydra:required "true"^^xsd:boolean;
+					schema:defaultValue "57.0785";
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "minlongitude"^^xsd:string;
+					hydra:property "epos:westernmostLongitude";
+					rdfs:range "xsd:float";
+					rdfs:label "Minimum Longitude";
+					schema:minValue "-180.0";
+					schema:maxValue "180.0";
+					hydra:required "true"^^xsd:boolean;
+					schema:defaultValue "0.41748";
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "maxlongitude"^^xsd:string;
+					hydra:property "epos:easternmostLongitude";
+					rdfs:range "xsd:float";
+					rdfs:label "Maximum Longitude";
+					schema:minValue "-180.0";
+					schema:maxValue "180.0";
+					hydra:required "true"^^xsd:boolean;
+					schema:defaultValue "5.37963";
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "outputFormat"^^xsd:string;
+					rdfs:range "xsd:string";
+					rdfs:label "Output format";
+					hydra:property "schema:encodingFormat";			
+					#http:paramValue "application/geo%2Bjson"; # do we need to urlEncode this ?
+					#http:paramValue "application/gml%2Bxml%3B%20version%3D3.2"; # do we need to urlEncode this ?
+					http:paramValue "json";
+					schema:defaultValue "json";
+					hydra:required "true"^^xsd:boolean;
+				];
+
+ 				## start adding CQL
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=gml:identifier";
+					rdfs:range "xsd:string";
+					rdfs:label "index identifier";
+					hydra:required "false"^^xsd:boolean;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=gml:name";
+					rdfs:range "xsd:string";
+					rdfs:label "Borehole name";
+					hydra:required "false"^^xsd:boolean;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=gml:purpose";
+					rdfs:range "xsd:string";
+					rdfs:label "Borehole purpose";
+#NEED TO DIFFERENCIATE BETWEEN THE paramValue FOR THE QUERY AND WHAT IS SHOWN IN THE DROPDOWN MENU (skos:prefLabel) FOR THE USER! NEEDS ACTIVELY LINKED VOCABULARIES, INCLUDING THEIR DEFINITIONS!
+# http:paramValue have we progressed on this since 2019 or do I need to plainly write all entries ?
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/aquaculture";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/contingencyWaterSupply";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/dewatering";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/disposal";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/drinkingWaterSupply";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/emergencyWaterSupply";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/environmentalMonitoring";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/explorationExploitationEnergyResources";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/explorationExploitationNonmetallicMineralDeposits";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/explorationExploitationRawMaterial";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/explorationNaturalUndergroundStorage";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/flowingShot";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/geochemicalSurvey";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/geologicalSurvey";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/geophysicalSurvey";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/geotechnicalSurvey";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/geothermalEnergy";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/groundwaterLevelMonitoring";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/heatStorage";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/hydrocarbonAppraisal";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/hydrocarbonExploration";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/hydrocarbonProduction";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/hydrogeologicalSurvey";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/industrialWaterSupply";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/irrigation";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/mineralExplorationExtraction";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/mitigation";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/multidisciplinaryScientificResearch";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/pedologicalSurvey";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/pollutionMonitoring";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/recharge";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/remediation";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/shotHole";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/thermalCleaning";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/waterQualityMonitoring";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/waterSupply";
+					hydra:required "false"^^xsd:boolean;
+				];
+#NEED TO DIFFERENCIATE BETWEEN THE paramValue FOR THE QUERY AND WHAT IS SHOWN IN THE DROPDOWN MENU (skos:prefLabel) FOR THE USER! NEEDS ACTIVELY LINKED VOCABULARIES, INCLUDING THEIR DEFINITIONS!
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=status";
+					rdfs:range "xsd:string";
+					rdfs:label "Borehole status";
+					# http:paramValue have we progressed on this since 2019 or do I need to plainly write all entries ?
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/abandoning";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/backfilling";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/cased";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/casingPartiallyReplaced";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/casingReplaced";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/cleaning";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/deconstructed";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/deepening";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/drillingCompleted";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/drillingCurrentlyInProgress";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/filed";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/maintenance";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/na";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/overdrilling";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/partlyDeconstructed";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/partlyRefilled";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/performanceTest";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/projected";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/recovery";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/refilled";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/restoration";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/underDeconstruction";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/wellCapReplaced";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/wellChamberReconditioned";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/wellInstallationReconditioned";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeStatus/widening";
+					hydra:required "false"^^xsd:boolean;
+				];
+#NEED TO DIFFERENCIATE BETWEEN THE paramValue FOR THE QUERY AND WHAT IS SHOWN IN THE DROPDOWN MENU (skos:prefLabel) FOR THE USER! NEEDS ACTIVELY LINKED VOCABULARIES, INCLUDING THEIR DEFINITIONS!
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=drillingMethod";
+					rdfs:range "xsd:string";
+					rdfs:label "Drilling method";
+					# http:paramValue have we progressed on this since 2019 or do I need to plainly write all entries ?
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/RABDrilling";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/XCB";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/airCore";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/auger";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/boxCore";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/cableToolDrilling";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/conePenetrometerTestProbe";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/conventionalCore";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/coreDrilling";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/delftSampler";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/diamondCore";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/directPush";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/geoprobeCore";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/gravityCore";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/handAuger";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/hydraulicRotaryDrilling";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/kastenCore";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/mackerethCore";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/mackintoshProbe";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/percussionDrilling";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/pistonCore";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/powerAuger";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/probe";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/reverseCirculationDrilling";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/rotaryHammerDrilling";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/sidewallCore";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/sidewallCoreBullet";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/sidewallCoreMechanical";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/sonic";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/vibrocore";
+					http:paramValue "https://data.geoscience.earth/ncl/DrillingMethod/windowSampler";
+					hydra:required "false"^^xsd:boolean;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=operator";
+					rdfs:range "xsd:string";
+					rdfs:label "Operator ";
+					hydra:required "false"^^xsd:boolean;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=driller";
+					rdfs:range "xsd:string";
+					rdfs:label "Driller (company)";
+					hydra:required "false"^^xsd:boolean; # (but important to be displayed in the results)
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=drillStartDate";
+					rdfs:range "xsd:date";
+					rdfs:label "Drilling start date (YYYY-MM-DD)";
+					hydra:required "false"^^xsd:boolean;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=drillEndDate";
+					rdfs:range "xsd:date";
+					rdfs:label "Drilling end date (YYYY-MM-DD)";
+					hydra:required "false"^^xsd:boolean;
+				];
+#NEED TO DIFFERENCIATE BETWEEN THE paramValue FOR THE QUERY AND WHAT IS SHOWN IN THE DROPDOWN MENU (skos:prefLabel) FOR THE USER! NEEDS ACTIVELY LINKED VOCABULARIES, INCLUDING THEIR DEFINITIONS!
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=startPoint";
+					rdfs:range "xsd:string";
+					rdfs:label "startPoint";
+					# http:paramValue have we progressed on this since 2019 or do I need to plainly write all entries ?
+					http:paramValue "https://data.geoscience.earth/ncl/StartPoint/artificialLandSurface";
+					http:paramValue "https://data.geoscience.earth/ncl/StartPoint/naturalLandSurface";
+					http:paramValue "https://data.geoscience.earth/ncl/StartPoint/openPitFloor";
+					http:paramValue "https://data.geoscience.earth/ncl/StartPoint/openPitWall";
+					http:paramValue "https://data.geoscience.earth/ncl/StartPoint/seaFloor";
+					http:paramValue "https://data.geoscience.earth/ncl/StartPoint/underground";
+					hydra:required "false"^^xsd:boolean;
+				];
+#NEED TO DIFFERENCIATE BETWEEN THE paramValue FOR THE QUERY AND WHAT IS SHOWN IN THE DROPDOWN MENU (skos:prefLabel) FOR THE USER! NEEDS ACTIVELY LINKED VOCABULARIES, INCLUDING THEIR DEFINITIONS!
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=inclinationType";
+					rdfs:range "xsd:string";
+					rdfs:label "Borehole inclination";
+					# http:paramValue have we progressed on this since 2019 or do I need to plainly write all entries ?
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeInclinationType/horizontal";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeInclinationType/inclined";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeInclinationType/inclinedDown";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeInclinationType/inclinedUp";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeInclinationType/vertical";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeInclinationType/verticalDown";
+					http:paramValue "https://data.geoscience.earth/ncl/BoreholeInclinationType/verticalUp";
+					hydra:required "false"^^xsd:boolean;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=boreholeMaterialCustodian";
+					rdfs:range "xsd:string";
+					rdfs:label "Custodian of sample material (company, institute name)";
+					hydra:required "false"^^xsd:boolean;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=boreholeLength_m";
+					#rdfs:range "gml:MeasureType";
+					rdfs:range "xsd:string";
+					rdfs:label "Length of the borehole [m]";
+					hydra:required "false"^^xsd:boolean;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=elevation_m";
+					#rdfs:range "gml:MeasureType";
+					rdfs:range "xsd:string";
+					rdfs:label "Elevation of the drill site [m]";
+					hydra:required "false"^^xsd:boolean;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=elevation_srs";
+					#rdfs:range "xsd:anyURI";
+					rdfs:range "xsd:string";
+					rdfs:label "elevation_srs";
+					hydra:required "false"^^xsd:boolean;
+					schema:readonlyValue "true"^^xsd:boolean ;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=positionalAccuracy";
+					rdfs:range "xsd:string";
+					rdfs:label "positionalAccuracy";
+					hydra:required "false"^^xsd:boolean;
+					schema:readonlyValue "true"^^xsd:boolean ;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=source";
+					rdfs:range "xsd:string";
+					rdfs:label "source";
+					hydra:required "false"^^xsd:boolean;
+					schema:readonlyValue "true"^^xsd:boolean ;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=parentBorehole_uri";
+					#rdfs:range "xsd:anyURI";
+					rdfs:range "xsd:string";
+					rdfs:label "parentBorehole_uri";
+					hydra:required "false"^^xsd:boolean;
+					schema:readonlyValue "true"^^xsd:boolean ;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=metadata_uri";
+					#rdfs:range "xsd:anyURI";
+					rdfs:range "xsd:string";
+					rdfs:label "metadata_uri";
+					hydra:required "false"^^xsd:boolean;
+					schema:readonlyValue "true"^^xsd:boolean ;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=cored";
+					rdfs:range "xsd:boolean";
+					rdfs:label "Borehole has drill core";
+					hydra:required "false"^^xsd:boolean;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=accessToPhysicalDrillCore";
+					rdfs:range "xsd:boolean";
+					rdfs:label "Physical access to drill core possible";
+					hydra:required "false"^^xsd:boolean;
+				];
+#NEED TO DIFFERENCIATE BETWEEN THE paramValue FOR THE QUERY AND WHAT IS SHOWN IN THE DROPDOWN MENU (skos:prefLabel) FOR THE USER! NEEDS ACTIVELY LINKED VOCABULARIES, INCLUDING THEIR DEFINITIONS!
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=boreholeUse";
+					rdfs:range "xsd:string";
+					rdfs:label "Present use of the borehole";
+					# http:paramValue have we progressed on this since 2019 or do I need to plainly write all entries ?
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/aquaculture";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/contingencyWaterSupply";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/dewatering";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/disposal";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/drinkingWaterSupply";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/emergencyWaterSupply";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/environmentalMonitoring";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/explorationExploitationEnergyResources";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/explorationExploitationNonmetallicMineralDeposits";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/explorationExploitationRawMaterial";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/explorationNaturalUndergroundStorage";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/flowingShot";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/geochemicalSurvey";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/geologicalSurvey";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/geophysicalSurvey";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/geotechnicalSurvey";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/geothermalEnergy";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/groundwaterLevelMonitoring";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/heatStorage";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/hydrocarbonAppraisal";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/hydrocarbonExploration";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/hydrocarbonProduction";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/hydrogeologicalSurvey";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/industrialWaterSupply";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/irrigation";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/mineralExplorationExtraction";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/mitigation";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/multidisciplinaryScientificResearch";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/pedologicalSurvey";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/pollutionMonitoring";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/recharge";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/remediation";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/shotHole";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/thermalCleaning";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/waterQualityMonitoring";
+					http:paramValue "http://inspire.ec.europa.eu/codelist/BoreholePurposeValue/waterSupply";
+					hydra:required "false"^^xsd:boolean;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=detailedDescription";
+					rdfs:range "xsd:string";
+					rdfs:label "Borehole detailed description";
+					hydra:required "false"^^xsd:boolean;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=geophysicalLogs";
+					rdfs:range "xsd:string";
+					rdfs:label "Borehole geophysical logs";
+					hydra:required "false"^^xsd:boolean;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=geologicalDescription";
+					rdfs:range "xsd:string";
+					rdfs:label "Borehole geological description";
+					hydra:required "false"^^xsd:boolean;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=groundWaterLevel";
+					rdfs:range "xsd:string";
+					rdfs:label "Borehole groundwater level data";
+					hydra:required "false"^^xsd:boolean;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=groundWaterChemistry";
+					rdfs:range "xsd:string";
+					rdfs:label "Borehole groundwater chemistry data";
+					hydra:required "false"^^xsd:boolean;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=rockGeochemistry";
+					rdfs:range "xsd:string";
+					rdfs:label "Borehole rock geochemistry data";
+					hydra:required "false"^^xsd:boolean;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=poreGasChemistry";
+					rdfs:range "xsd:string";
+					rdfs:label "Borehole pore gas chemistry data";
+					hydra:required "false"^^xsd:boolean;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "CQL_FILTER=geoTechnicalInfo";
+					rdfs:range "xsd:string";
+					rdfs:label "Borehole geotechnical information";
+					hydra:required "false"^^xsd:boolean;
+				];
+		] ;
+. 
+
+
+
+<https://data.geoscience.earth/api/wmsBorehole> a epos:WebService;
+	schema:identifier "https://data.geoscience.earth/api/wmsBorehole";
+	#schema:identifier [ a schema:PropertyValue; 
+		#schema:propertyID  "DDSS-ID"; 
+		#schema:value  "WP15-DDSS-001j"; 
+	#]; 
+	schema:description "This service allows visualization of available Boreholes in a given area of Europe.";
+	schema:name "Borehole View Service";
+	hydra:entrypoint "https://data.geoscience.earth/api/wmsBorehole?"^^xsd:anyURI; 
+	schema:provider <https://data.geoscience.earth/ncl/organization/1>;
+	schema:datePublished "2016-10-27Z"^^xsd:date;
+	schema:dateModified "2018-01-19Z"^^xsd:date;
+	dct:conformsTo <https://data.geoscience.earth/doc/wmsSpec>;
+	dct:spatial [ a dct:Location; 
+		locn:geometry "POLYGON((-180 -90,-180 90,180 90,180 -90,-180 -90))"^^gsp:wktLiteral; 
+	]; 
+	hydra:supportedOperation <https://data.geoscience.earth/api/wmsBorehole/operation>;
+	schema:keywords "borehole","geology";
+	dct:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:anyURI ;
+	dct:temporal [ a dct:PeriodOfTime; 
+		schema:startDate "1886-05-16T00:00:00Z"^^xsd:dateTime; 
+		#schema:endDate "YYYY-MM-DDThh:mm:ssZ"^^xsd:dateTime; 
+	]; 
+	dcat:contactPoint <contactBoreholeIndex/manager>;
+. 
+
+
+<https://data.geoscience.earth/api/wmsBorehole/operation> a hydra:Operation;
+		hydra:method "GET"^^xsd:string;
+		hydra:returns "image/png";
+		hydra:property[ a hydra:IriTemplate;
+			hydra:template "https://data.geoscience.earth/api/wxsBorehole{?service, version, request, layers, crs, format, width, height}&bbox={minlatitude, minlongitude, maxlatitude, maxlongitude}"^^xsd:string;
+				
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "service"^^xsd:string;
+					rdfs:range "xsd:string";
+					rdfs:label "service";
+					schema:defaultValue "WMS";
+					hydra:required "true"^^xsd:boolean;
+					schema:readonlyValue "true"^^xsd:boolean ;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "version"^^xsd:string;
+					rdfs:range "xsd:string";
+					rdfs:label "WMS version";
+					schema:defaultValue "1.3.0";
+					hydra:required "true"^^xsd:boolean;
+					schema:readonlyValue "true"^^xsd:boolean ;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "request"^^xsd:string;
+					rdfs:range "xsd:string";
+					rdfs:label "Request type";
+					schema:defaultValue "GetMap";
+					hydra:required "true"^^xsd:boolean;
+					schema:readonlyValue "true"^^xsd:boolean ;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "layers"^^xsd:string;
+					rdfs:range "xsd:string";
+					rdfs:label "Layers";
+					schema:defaultValue "epos-gsmlp:BoreholeView_Group";
+					http:paramValue "epos-gsmlp:BoreholeView_Group";
+					hydra:required "true"^^xsd:boolean;
+					schema:readonlyValue "true"^^xsd:boolean ;
+				];
+				#hydra:mapping[ a hydra:IriTemplateMapping;
+					#hydra:variable "BBOX"^^xsd:string;
+					#rdfs:range "xsd:string";
+					#rdfs:label "WMS BBOX filter parameter";
+					#hydra:required "true"^^xsd:boolean;
+					#schema:defaultValue "-180,-90,180,90";
+				#];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "minlatitude"^^xsd:string;
+					hydra:property "epos:southernmostLatitude";
+					rdfs:range "xsd:float";
+					rdfs:label "Minimum Latitude";
+					schema:minValue "-90.0";
+					schema:maxValue "90.0";
+					hydra:required "true"^^xsd:boolean;
+					schema:defaultValue "-90";
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "maxlatitude"^^xsd:string;
+					hydra:property "epos:northernmostLatitude";
+					rdfs:range "xsd:float";
+					rdfs:label "Maximum Latitude";
+					schema:minValue "-90.0";
+					schema:maxValue "90.0";
+					hydra:required "true"^^xsd:boolean;
+					schema:defaultValue "90";
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "minlongitude"^^xsd:string;
+					hydra:property "epos:westernmostLongitude";
+					rdfs:range "xsd:float";
+					rdfs:label "Minimum Longitude";
+					schema:minValue "-180.0";
+					schema:maxValue "180.0";
+					hydra:required "true"^^xsd:boolean;
+					schema:defaultValue "-180";
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "maxlongitude"^^xsd:string;
+					hydra:property "epos:easternmostLongitude";
+					rdfs:range "xsd:float";
+					rdfs:label "Maximum Longitude";
+					schema:minValue "-180.0";
+					schema:maxValue "180.0";
+					hydra:required "true"^^xsd:boolean;
+					schema:defaultValue "180";
+					
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "crs"^^xsd:string;
+					rdfs:range "xsd:string";
+					rdfs:label "Spatial Reference System";
+					schema:defaultValue "EPSG:4326";
+					hydra:required "true"^^xsd:boolean;
+					schema:readonlyValue "true"^^xsd:boolean ;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "format"^^xsd:string;
+					rdfs:range "xsd:string";
+					rdfs:label "Output format";
+					hydra:property "schema:encodingFormat";			
+					http:paramValue "image/png";
+					http:paramValue "image/jpeg";
+					http:paramValue "image/geotiff";
+					schema:defaultValue "image/png";
+					hydra:required "true"^^xsd:boolean;
+					schema:readonlyValue "true"^^xsd:boolean ;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "width"^^xsd:string;
+					rdfs:range "xsd:string";
+					rdfs:label "Width of the output map";
+					schema:defaultValue "1536";
+					hydra:required "true"^^xsd:boolean;
+					schema:readonlyValue "true"^^xsd:boolean ;
+				];
+				hydra:mapping[ a hydra:IriTemplateMapping;
+					hydra:variable "height"^^xsd:string;
+					rdfs:range "xsd:string";
+					rdfs:label "Height of the output map";
+					schema:defaultValue "660";
+					hydra:required "true"^^xsd:boolean;
+					schema:readonlyValue "true"^^xsd:boolean ;
+				];
+		] ;
+.
