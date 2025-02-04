@@ -1,0 +1,188 @@
+###########################################
+# EPOS DCAT AP File - WP12                #
+# Version 1.3                             #
+# Release Date 20/10/2020                 #
+#                                         #
+# Version 1.2                             #
+# Release Date 29/03/2019                 #
+#                                         #
+# Version 1.1                             #
+# Release Date 08/02/2019                 #
+#                                         #
+# Previous releases:                      #      
+# Version 1.0                             #    
+# Release Date: 21/09/2018                #
+###########################################
+
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix epos: <https://www.epos-eu.org/epos-dcat-ap#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix hydra: <http://www.w3.org/ns/hydra/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <http://schema.org/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix cnt: <http://www.w3.org/2011/content#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix http: <http://www.w3.org/2006/http#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix gsp: <http://www.opengis.net/ont/geosparql#> .
+@prefix dqv: <http://www.w3.org/ns/dqv#> .
+@prefix oa:<http://www.w3.org/ns/oa#> .
+
+
+###########
+# Persons #
+###########
+
+<http://orcid.org/0000-0001-8555-6494> a schema:Person;
+  schema:identifier [ a schema:PropertyValue;
+    schema:propertyID "orcid";
+    schema:value "orcid.org/0000-0001-8555-6494";
+  ];
+  schema:familyName "DDDDDDDDDDDDDDDDDD";
+  schema:givenName "DDDDDDDDDDDDDDDDDD";
+  schema:address [ a schema:PostalAddress;
+    schema:streetAddress "DDDDDDDDDDDDDDDDDD";
+    schema:addressLocality "DDDDDDDDDDDDDDDDDD";
+    schema:postalCode "20133";
+    schema:addressCountry "Italy";
+  ];
+  schema:email "DDDDDDDDDDDDDDDDDD@irea.cnr.it";
+  schema:telephone "+390223699275";
+  schema:url "http://orcid.org/0000-0001-8555-6494"^^xsd:anyURI;
+  schema:qualifications "Senior Researcher";
+  schema:affiliation <ISNI:http://isni.org/isni/0000000085180610>;
+  schema:contactPoint <http://orcid.org/0000-0001-8555-6494/scientificContact>;
+.
+
+<http://orcid.org/0000-0001-8555-6494/scientificContact> a schema:ContactPoint ;
+  schema:email "DDDDDDDDDDDDDDDDDD@irea.cnr.it" ;
+  schema:availableLanguage "en" ;
+  schema:contactType "scientificContact" ;
+.
+
+##############################################
+# WEB SERVICES - LOS_DISPLACEMENT_TIMESERIES #
+##############################################
+
+<DDDDDDDDDDDDDDDDDD> a epos:WebService;
+  schema:identifier "DDDDDDDDDDDDDDDDDD";
+  schema:description "The service allows the user to search for the geocoded DTSLOS products by space, time and some specific interferometric parameter. More details on the service features are provided in the service documentation.";
+  dcat:theme <epos:InSAR>;
+  schema:name "LOS Displacement Time Series";
+  hydra:entrypoint "https://gitlab.com/epos-tcs-satdata/doc/-/blob/main/EPOSPortalInSARConfigurationDescription.md"^^xsd:anyURI ;
+  schema:provider <ISNI:http://isni.org/isni/0000000085180610>;
+  schema:datePublished "2022-11-03"^^xsd:date;
+  schema:dateModified "2022-11-03"^^xsd:date;
+  dct:spatial [ a dct:Location;
+    locn:geometry "POLYGON((-180 -90,-180 90,180 90,180 -90,-180 -90))"^^gsp:wktLiteral;
+  ];
+  hydra:supportedOperation <DDDDDDDDDDDDDDDDDD/Operation/WMTS/test>;
+  dct:conformsTo <DOCUMETANTATIONOLE>;
+  owl:versionInfo "1.1";
+  schema:keywords "Remote Sensing", "Interferometry", "DInSAR", "phase", "displacement", "timeseries", "multitmporal", "SAR", "InSAR", "LOS", "deformation", "ascending", "descending", "range change", "SBAS", "PS";
+  dct:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:anyURI;
+  dct:temporal [ a dct:PeriodOfTime;
+    schema:startDate "1978-01-01T00:00:00Z"^^xsd:dateTime;
+    #schema:endDate "YYYY-MM-DDThh:mm:ssZ"^^xsd:dateTime;
+  ];
+  dcat:contactPoint <http://orcid.org/0000-0001-8555-6494/scientificContact>;
+.
+
+###################################################
+# API DOCUMENTATION COMMON TO ALL THE WEBSERVICES #
+###################################################
+
+<DOCUMETANTATIONOLE> a hydra:ApiDocumentation ;
+  hydra:title "Satellite Data InSAR service search parameter documentation" ;
+  hydra:description "This is the technical documentation for the Satellite Data InSAR service search parameters" ;
+  hydra:entrypoint "https://gitlab.com/epos-tcs-satdata/doc/-/blob/main/EPOSPortalInSARConfigurationDescription.md"^^xsd:anyURI ;
+.
+
+
+#############################################################
+# OPERATIONS - LOS_DISPLACEMENT_TIMESERIES/Operation/Search #
+#############################################################
+
+  <DDDDDDDDDDDDDDDDDD/Operation/WMTS/test> a hydra:Operation;
+    hydra:method "GET"^^xsd:string;
+    hydra:returns "application/vnd.ogc.wmts_xml";
+    hydra:property[ a hydra:IriTemplate;
+      hydra:template "http://44.202.182.203:8080/geoserver/gwc/service/wmts?SERVICE=WMTS&REQUEST=GetCapabilities"^^xsd:string;
+    ] ;
+.
+
+
+###########################################
+# DATASETS - LOS Displacement Time Series #
+###########################################
+
+<DATASETOLE4> a dcat:Dataset;
+  dct:title "Line of sight displacement time series";
+  dct:identifier "DATASETOLE4";
+  dct:description "Line of sight displacement time series";
+  adms:identifier [ a adms:Identifier ;
+    adms:schemeAgency "DDSS-ID" ;
+    skos:notation "WP12-DDSS-008" ;
+  ];
+  dqv:hasQualityAnnotation [ a oa:Annotation ;
+    oa:hasBody "https://gitlab.com/epos-tcs-satdata/doc/-/blob/main/QualityAssurance.md"^^xsd:anyURI ;
+  ];
+  dct:created "2016-01-01T00:00:00Z"^^xsd:dateTime ;
+  dct:issued "2016-01-01T00:00:00Z"^^xsd:dateTime ;
+  dct:modified "2022-11-03T00:00:00Z"^^xsd:dateTime ;
+  dct:type "http://purl.org/dc/dcmitype/Dataset"^^xsd:anyURI;
+  dct:accrualPeriodicity "http://purl.org/cld/freq/irregular"^^xsd:anyURI;
+  dct:temporal [ a dct:PeriodOfTime ;
+    schema:startDate "1978-01-01T00:00:00Z"^^xsd:dateTime ;
+    #schema:endDate "YYYY-MM-DDThh:mm:ss"^^xsd:dateTime ;
+  ];
+  dcat:theme  <category:insar>;
+  dcat:keyword "Remote Sensing", "Interferometry", "DInSAR", "phase", "displacement", "timeseries", "multitmporal", "SAR", "InSAR", "LOS", "deformation", "ascending", "descending", "range change", "SBAS", "PS";
+  dcat:contactPoint <http://orcid.org/0000-0001-8555-6494/scientificContact>;
+  dct:publisher <ISNI:http://isni.org/isni/0000000085180610>;
+  dct:publisher <ISNI:http://isni.org/isni/0000000419368403>;
+  dct:publisher <ISNI:https://isni.org/isni/0000000453763722>;
+  dcat:distribution <DATASETOLE4/Distribution/LOS_Displ_TS>;
+  dct:spatial [ a dct:Location ;
+    locn:geometry "POLYGON((-180.0 -90.0,180.0 -90.0,180.0 90.0,-180.0 90.0,-180.0 -90.0))"^^gsp:wktLiteral;
+  ];
+.
+
+
+#################
+# DISTRIBUTIONS #
+#################
+
+################################################
+# DISTRIBUTIONS - LOS Displacement Time Series #
+################################################
+
+<DATASETOLE4/Distribution/LOS_Displ_TS> a dcat:Distribution;
+  dct:identifier "DATASETOLE4/Distribution/LOS_Displ_TS";
+  dct:title "DDDDDDDDDDDDDDDDDD";
+  dct:description "DDDDDDDDDDDDDDDDDD";
+  dct:issued "2017-01-01"^^xsd:date ;
+  dct:modified "2022-11-03"^^xsd:date ;
+  dct:type "http://publications.europa.eu/resource/authority/distribution-type/WEB_SERVICE"^^xsd:anyURI;
+  dcat:accessURL <DDDDDDDDDDDDDDDDDD/Operation/WMTS/test>;
+  dct:conformsTo <DDDDDDDDDDDDDDDDDD>;
+  dct:format "http://publications.europa.eu/resource/authority/file-type/JSON"^^xsd:anyURI;
+  dct:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:anyURI;
+.
+
+
+  <epos:Satellite-Observations> a skos:ConceptScheme;
+    dct:title "Satellite-Observations";
+    dct:description "It contains the concepts of Satellite-Observations";
+.
+  <epos:InSAR> a skos:Concept;
+    skos:definition "InSAR ";
+    skos:inScheme <epos:Satellite-Observations>;
+    skos:prefLabel "InSAR" ;
+.
