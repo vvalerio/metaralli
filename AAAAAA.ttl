@@ -1,3 +1,19 @@
+###########################################
+# EPOS DCAT AP File - WP12                #
+# Version 1.3                             #
+# Release Date 20/10/2020                 #
+#                                         #
+# Version 1.2                             #
+# Release Date 29/03/2019                 #
+#                                         #
+# Version 1.1                             #
+# Release Date 08/02/2019                 #
+#                                         #
+# Previous releases:                      #      
+# Version 1.0                             #    
+# Release Date: 21/09/2018                #
+###########################################
+
 @prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix epos: <https://www.epos-eu.org/epos-dcat-ap#> .
@@ -97,7 +113,7 @@
     hydra:method "GET"^^xsd:string;
     hydra:returns "application/epos.geo+json";
     hydra:property[ a hydra:IriTemplate;
-      hydra:template "https://insar.irea.cnr.it/geoserver/gwc/service/wmts?SERVICE=WMTS&REQUEST=GetCapabilities"^^xsd:string;
+      hydra:template "http://10.101.10.29:5000/wmts/geojson?service=WMTS?SERVICE=WMTS&REQUEST=GetCapabilities"^^xsd:string;
     ] ;
 .
 
