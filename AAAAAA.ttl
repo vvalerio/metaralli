@@ -113,7 +113,7 @@
     hydra:method "GET"^^xsd:string;
     hydra:returns "application/epos.geo+json";
     hydra:property[ a hydra:IriTemplate;
-      hydra:template "http://10.101.10.29:5000/wmts/geojson?service=WMTS?SERVICE=WMTS&REQUEST=GetCapabilities"^^xsd:string;
+      hydra:template "http://10.101.20.40:5000/wmts/geojson?service=WMTS?SERVICE=WMTS&REQUEST=GetCapabilities"^^xsd:string;
     ] ;
 .
 
